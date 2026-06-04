@@ -648,9 +648,6 @@ export function Hero() {
             min-height: 400px; 
             width: 100%;
           }
-          .hero-image-layer {
-            padding-left: 0;
-          }
         }
 
         @media (max-width: 768px) {
