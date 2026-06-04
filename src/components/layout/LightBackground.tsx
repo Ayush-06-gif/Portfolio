@@ -15,7 +15,7 @@ export function LightBackground() {
     const generatedShapes = Array.from({ length: 15 }).map((_, i) => ({
       id: i,
       type: ["dot", "circle", "cross"][Math.floor(Math.random() * 3)],
-      size: Math.random() * 15 + 8, // Between 8px and 23px
+      size: Math.random() * 8 + 6, // Between 6px and 14px (reduced from 23px)
       top: `${Math.random() * 100}vh`,
       left: `${Math.random() * 100}vw`,
       duration: Math.random() * 15 + 20, // 20s to 35s
