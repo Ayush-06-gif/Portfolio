@@ -2,7 +2,7 @@
 
 import { useState, useCallback, useRef } from "react";
 import { motion, AnimatePresence, useMotionValue, useSpring, useTransform } from "framer-motion";
-import { Code2, Brain, Layers, Database, BookOpen } from "lucide-react";
+import { Code2, Brain, Layers, Database, BookOpen, Bot, Cloud, PenTool } from "lucide-react";
 import { skillCategories } from "@/lib/data";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 
@@ -12,6 +12,9 @@ const iconMap: Record<string, React.ReactNode> = {
   Layers: <Layers style={{ width: 16, height: 16 }} />,
   Database: <Database style={{ width: 16, height: 16 }} />,
   BookOpen: <BookOpen style={{ width: 16, height: 16 }} />,
+  Bot: <Bot style={{ width: 16, height: 16 }} />,
+  Cloud: <Cloud style={{ width: 16, height: 16 }} />,
+  PenTool: <PenTool style={{ width: 16, height: 16 }} />,
 };
 
 const tabColors = [
@@ -20,6 +23,7 @@ const tabColors = [
   { bg: "rgba(212, 165, 116, 0.08)", border: "rgba(212, 165, 116, 0.25)", text: "#9A7B52" },
   { bg: "rgba(196, 154, 139, 0.08)", border: "rgba(196, 154, 139, 0.2)", text: "#9A706A" },
   { bg: "rgba(138, 131, 120, 0.08)", border: "rgba(138, 131, 120, 0.2)", text: "var(--stone)" },
+  { bg: "rgba(161, 74, 34, 0.08)", border: "rgba(161, 74, 34, 0.2)", text: "var(--terracotta-dark)" },
 ];
 
 const skillQuips: Record<string, string> = {
