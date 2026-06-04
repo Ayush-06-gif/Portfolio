@@ -66,47 +66,7 @@ export function Contact() {
   });
   const [status, setStatus] = useState<FormStatus>("idle");
 
-  async function handleSubmit(e: React.FormEvent) {
-    e.preventDefault();
-    
-    // Manual validation to ensure the user knows if a field is empty
-    if (!formData.name.trim() || !formData.email.trim() || !formData.subject.trim() || !formData.message.trim()) {
-      setStatus("validation-error");
-      setTimeout(() => setStatus("idle"), 4000);
-      return;
-    }
 
-    setStatus("sending");
-    
-    try {
-      const response = await fetch("https://api.web3forms.com/submit", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-          Accept: "application/json",
-        },
-        body: JSON.stringify({
-          access_key: process.env.NEXT_PUBLIC_WEB3FORMS_ACCESS_KEY,
-          ...formData
-        }),
-      });
-      
-      const result = await response.json();
-      
-      if (result.success) {
-        setStatus("success");
-        setFormData({ name: "", email: "", subject: "", message: "" });
-      } else {
-        console.error("Web3Forms API Error:", result);
-        setStatus("error");
-      }
-    } catch (error) {
-      console.error("Fetch Error:", error);
-      setStatus("error");
-    }
-    
-    setTimeout(() => setStatus("idle"), 5000);
-  }
 
   function handleChange(e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) {
     setFormData((prev) => ({ ...prev, [e.target.name]: e.target.value }));
@@ -228,27 +188,68 @@ export function Contact() {
             transition={{ duration: 0.7, delay: 0.1 }}
           >
             <div className="card paper-texture" style={{ padding: "2rem" }}>
-              <form onSubmit={handleSubmit} noValidate style={{ display: "flex", flexDirection: "column", gap: "1.25rem" }}>
+              <form noValidate style={{ display: "flex", flexDirection: "column", gap: "1.25rem", position: "relative", zIndex: 1 }}>
                 <div className="form-row" style={{ display: "grid", gridTemplateColumns: "1fr", gap: "1.25rem" }}>
                   <div>
                     <label htmlFor="name" className="text-caption" style={{ display: "block", marginBottom: 8 }}>Full Name</label>
-                    <input type="text" id="name" name="name" value={formData.name} onChange={handleChange} placeholder="John Doe" className="input" />
+                    <input type="text" id="name" name="name" value={formData.name} onChange={handleChange} placeholder="John Doe" className="input" style={{ position: "relative", zIndex: 2 }} />
                   </div>
                   <div>
                     <label htmlFor="email" className="text-caption" style={{ display: "block", marginBottom: 8 }}>Email</label>
-                    <input type="email" id="email" name="email" value={formData.email} onChange={handleChange} placeholder="john@example.com" className="input" />
+                    <input type="email" id="email" name="email" value={formData.email} onChange={handleChange} placeholder="john@example.com" className="input" style={{ position: "relative", zIndex: 2 }} />
                   </div>
                 </div>
                 <div>
                   <label htmlFor="subject" className="text-caption" style={{ display: "block", marginBottom: 8 }}>Subject</label>
-                  <input type="text" id="subject" name="subject" value={formData.subject} onChange={handleChange} placeholder="Project collaboration" className="input" />
+                  <input type="text" id="subject" name="subject" value={formData.subject} onChange={handleChange} placeholder="Project collaboration" className="input" style={{ position: "relative", zIndex: 2 }} />
                 </div>
                 <div>
                   <label htmlFor="message" className="text-caption" style={{ display: "block", marginBottom: 8 }}>Message</label>
-                  <textarea id="message" name="message" value={formData.message} onChange={handleChange} rows={5} placeholder="Tell me about your project..." className="input" style={{ resize: "none" }} />
+                  <textarea id="message" name="message" value={formData.message} onChange={handleChange} rows={5} placeholder="Tell me about your project..." className="input" style={{ resize: "none", position: "relative", zIndex: 2 }} />
                 </div>
                 <button
-                  type="submit"
+                  type="button"
+                  onClick={() => {
+                    // Validation
+                    if (!formData.name.trim() || !formData.email.trim() || !formData.subject.trim() || !formData.message.trim()) {
+                      setStatus("validation-error");
+                      setTimeout(() => setStatus("idle"), 4000);
+                      return;
+                    }
+
+                    setStatus("sending");
+
+                    fetch("https://api.web3forms.com/submit", {
+                      method: "POST",
+                      headers: {
+                        "Content-Type": "application/json",
+                        Accept: "application/json",
+                      },
+                      body: JSON.stringify({
+                        access_key: process.env.NEXT_PUBLIC_WEB3FORMS_ACCESS_KEY,
+                        name: formData.name,
+                        email: formData.email,
+                        subject: formData.subject,
+                        message: formData.message,
+                      }),
+                    })
+                      .then((res) => res.json())
+                      .then((result) => {
+                        if (result.success) {
+                          setStatus("success");
+                          setFormData({ name: "", email: "", subject: "", message: "" });
+                        } else {
+                          console.error("Web3Forms API Error:", result);
+                          setStatus("error");
+                        }
+                        setTimeout(() => setStatus("idle"), 5000);
+                      })
+                      .catch((err) => {
+                        console.error("Fetch Error:", err);
+                        setStatus("error");
+                        setTimeout(() => setStatus("idle"), 5000);
+                      });
+                  }}
                   disabled={status === "sending"}
                   className="btn btn-primary"
                   style={{
@@ -256,6 +257,8 @@ export function Contact() {
                     padding: "1rem",
                     opacity: status === "sending" ? 0.6 : 1,
                     cursor: status === "sending" ? "not-allowed" : "pointer",
+                    position: "relative",
+                    zIndex: 2,
                   }}
                   aria-label="Send message"
                 >
