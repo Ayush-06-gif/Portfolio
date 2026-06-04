@@ -58,6 +58,7 @@ export function Hero() {
 
   useEffect(() => {
     function handleMouseMove(e: MouseEvent) {
+      if (window.innerWidth < 768 || window.matchMedia("(pointer: coarse)").matches) return;
       if (!heroCardRef.current) return;
       const rect = heroCardRef.current.getBoundingClientRect();
       const centerX = rect.left + rect.width / 2;
