@@ -146,6 +146,14 @@ body {
   background-attachment: fixed;
 }
 
+.dark-theme-bg {
+  display: none;
+}
+
+[data-theme='dark'] .dark-theme-bg {
+  display: block;
+}
+
 img, video, svg {
   display: block;
   max-width: 100%;
