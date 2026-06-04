@@ -226,7 +226,7 @@ export function Contact() {
             transition={{ duration: 0.7, delay: 0.1 }}
           >
             <div className="card paper-texture" style={{ padding: "2rem" }}>
-              <form onSubmit={handleSubmit} style={{ display: "flex", flexDirection: "column", gap: "1.25rem" }}>
+              <form onSubmit={handleSubmit} noValidate style={{ display: "flex", flexDirection: "column", gap: "1.25rem" }}>
                 <div className="form-row" style={{ display: "grid", gridTemplateColumns: "1fr", gap: "1.25rem" }}>
                   <div>
                     <label htmlFor="name" className="text-caption" style={{ display: "block", marginBottom: 8 }}>Full Name</label>
@@ -247,6 +247,7 @@ export function Contact() {
                 </div>
                 <button
                   type="submit"
+                  onClick={handleSubmit as any}
                   disabled={status === "sending"}
                   className="btn btn-primary"
                   style={{
