@@ -217,11 +217,6 @@ export const skillCategories: SkillCategory[] = [
     icon: "Cloud",
     skills: [
       { name: "Docker", icon: "https://skillicons.dev/icons?i=docker" },
-      { name: "Kubernetes", icon: "https://skillicons.dev/icons?i=kubernetes" },
-      { name: "AWS", icon: "https://skillicons.dev/icons?i=aws" },
-      { name: "Linux", icon: "https://skillicons.dev/icons?i=linux" },
-      { name: "Terraform", icon: "https://skillicons.dev/icons?i=terraform" },
-      { name: "NGINX", icon: "https://skillicons.dev/icons?i=nginx" },
       { name: "Git", icon: "https://skillicons.dev/icons?i=git" },
       { name: "GitHub", icon: "https://skillicons.dev/icons?i=github" },
     ],
