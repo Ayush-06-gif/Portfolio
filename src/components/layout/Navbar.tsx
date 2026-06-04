@@ -4,6 +4,7 @@ import { useState, useEffect, useCallback, useRef } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Menu, X, Download } from "lucide-react";
 import { navLinks, personalInfo } from "@/lib/data";
+import { ThemeToggle } from "@/components/ThemeToggle";
 
 function MagneticLink({ children, href, style }: { children: React.ReactNode; href: string; style?: React.CSSProperties }) {
   const ref = useRef<HTMLAnchorElement>(null);
@@ -179,23 +180,29 @@ export function Navbar() {
                 <Download style={{ width: 14, height: 14 }} />
                 Resume
               </a>
+              <ThemeToggle />
             </div>
 
-            {/* Mobile hamburger */}
-            <button
-              onClick={() => setIsMenuOpen(!isMenuOpen)}
-              className="nav-mobile-toggle"
-              style={{
-                display: "flex",
-                padding: 8,
-                color: "var(--text-secondary)",
-                transition: "color 0.2s",
-              }}
-              aria-label={isMenuOpen ? "Close menu" : "Open menu"}
-              aria-expanded={isMenuOpen}
-            >
-              {isMenuOpen ? <X style={{ width: 22, height: 22 }} /> : <Menu style={{ width: 22, height: 22 }} />}
-            </button>
+            {/* Mobile toggles */}
+            <div style={{ display: "flex", alignItems: "center", gap: "0.5rem" }}>
+              <div className="nav-mobile-toggle" style={{ display: "flex", alignItems: "center" }}>
+                <ThemeToggle />
+              </div>
+              <button
+                onClick={() => setIsMenuOpen(!isMenuOpen)}
+                className="nav-mobile-toggle"
+                style={{
+                  display: "flex",
+                  padding: 8,
+                  color: "var(--text-secondary)",
+                  transition: "color 0.2s",
+                }}
+                aria-label={isMenuOpen ? "Close menu" : "Open menu"}
+                aria-expanded={isMenuOpen}
+              >
+                {isMenuOpen ? <X style={{ width: 22, height: 22 }} /> : <Menu style={{ width: 22, height: 22 }} />}
+              </button>
+            </div>
           </div>
         </div>
       </motion.nav>

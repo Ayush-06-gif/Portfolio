@@ -68,6 +68,20 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" suppressHydrationWarning>
+      <head>
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `
+              try {
+                var theme = localStorage.getItem('theme');
+                if (theme === 'dark') {
+                  document.documentElement.setAttribute('data-theme', 'dark');
+                }
+              } catch (e) {}
+            `,
+          }}
+        />
+      </head>
       <body
         className={`${playfair.variable} ${dmSans.variable} ${jetbrainsMono.variable}`}
         style={{

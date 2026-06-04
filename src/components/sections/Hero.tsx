@@ -1,7 +1,7 @@
 "use client";
 
 import { useRef, useEffect, useState, useCallback } from "react";
-import { motion, useScroll, useTransform, AnimatePresence } from "framer-motion";
+import { motion, useScroll, useTransform, AnimatePresence, useMotionValue, useSpring } from "framer-motion";
 import { ArrowDown, Sparkles } from "lucide-react";
 import { heroData } from "@/lib/data";
 import { TextReveal } from "@/components/animations/TextReveal";
@@ -32,7 +32,19 @@ const parallaxShapes = [
 export function Hero() {
   const containerRef = useRef<HTMLDivElement>(null);
   const heroCardRef = useRef<HTMLDivElement>(null);
+  
+  // Framer Motion native mouse tracking for performance and 3D compatibility
+  const mouseX = useMotionValue(0);
+  const mouseY = useMotionValue(0);
   const [mousePos, setMousePos] = useState({ x: 0, y: 0 });
+
+  // Springs for smooth 3D tilting
+  const rotateX = useSpring(useTransform(mouseY, [-4, 4], [12, -12]), { stiffness: 150, damping: 20 });
+  const rotateY = useSpring(useTransform(mouseX, [-4, 4], [-12, 12]), { stiffness: 150, damping: 20 });
+
+  const imgRotateX = useSpring(useTransform(mouseY, [-4, 4], [6, -6]), { stiffness: 150, damping: 20 });
+  const imgRotateY = useSpring(useTransform(mouseX, [-4, 4], [-6, 6]), { stiffness: 150, damping: 20 });
+
   const [dotClickCount, setDotClickCount] = useState(0);
   const [showEasterEgg, setShowEasterEgg] = useState(false);
 
@@ -44,7 +56,6 @@ export function Hero() {
   const y = useTransform(scrollYProgress, [0, 1], [0, 150]);
   const opacity = useTransform(scrollYProgress, [0, 0.8], [1, 0]);
 
-  // Mouse-reactive 3D tilt (vanilla JS)
   useEffect(() => {
     function handleMouseMove(e: MouseEvent) {
       if (!heroCardRef.current) return;
@@ -53,10 +64,15 @@ export function Hero() {
       const centerY = rect.top + rect.height / 2;
       const x = ((e.clientX - centerX) / (rect.width / 2)) * 4;
       const yVal = ((e.clientY - centerY) / (rect.height / 2)) * 4;
+      
+      mouseX.set(x);
+      mouseY.set(yVal);
       setMousePos({ x, y: yVal });
     }
 
     function handleMouseLeave() {
+      mouseX.set(0);
+      mouseY.set(0);
       setMousePos({ x: 0, y: 0 });
     }
 
@@ -67,7 +83,7 @@ export function Hero() {
       window.removeEventListener("mousemove", handleMouseMove);
       document.removeEventListener("mouseleave", handleMouseLeave);
     };
-  }, []);
+  }, [mouseX, mouseY]);
 
   const nameChars = heroData.name.split("");
 
@@ -186,9 +202,9 @@ export function Hero() {
           <motion.div
             className="hero-left-content"
             style={{
-              transform: `rotateY(${mousePos.x * 0.3}deg) rotateX(${-mousePos.y * 0.3}deg)`,
+              rotateY,
+              rotateX,
               transformStyle: "preserve-3d",
-              transition: "transform 0.15s ease-out",
             }}
           >
             {/* Available Badge */}

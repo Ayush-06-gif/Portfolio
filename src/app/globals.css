@@ -58,6 +58,43 @@
   --ease-spring: cubic-bezier(0.34, 1.56, 0.64, 1);
 }
 
+/* ─── Dark Mode Properties ───────────────────────────────────── */
+[data-theme='dark'] {
+  /* Dark Color Palette */
+  --cream: #121212;
+  --warm-white: #1A1A1A;
+  --parchment: #222222;
+  --ink: #FDF6EC;
+  --charcoal: #EAEAEA;
+  --stone: #A59F96;
+  --stone-light: #6C665F;
+  
+  /* Keep terracotta and sage similar but adjusted for contrast */
+  --terracotta: #D46C3E;
+  --terracotta-light: #C75C2C;
+  --terracotta-dark: #F09A76; /* Lighter for dark mode visibility */
+  --sage: #8BAF79;
+  --sage-light: #688C56;
+  --dusty-rose: #CFA89A;
+  --clay: #E0B486;
+  --clay-light: #B88B5B;
+
+  --bg-primary: var(--cream);
+  --bg-card: var(--warm-white);
+  --bg-card-hover: #222222;
+  --bg-elevated: #2A2A2A;
+  
+  --border-subtle: rgba(255, 255, 255, 0.08);
+  --border-medium: rgba(255, 255, 255, 0.15);
+  --border-strong: rgba(255, 255, 255, 0.25);
+
+  --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.4);
+  --shadow-md: 0 4px 12px rgba(0, 0, 0, 0.5);
+  --shadow-lg: 0 10px 32px rgba(0, 0, 0, 0.6);
+  --shadow-xl: 0 20px 48px rgba(0, 0, 0, 0.7);
+  --shadow-card-hover: 0 16px 40px rgba(0, 0, 0, 0.6), 0 6px 12px rgba(0, 0, 0, 0.4);
+}
+
 /* ─── Reset & Base ───────────────────────────────────────────── */
 *, *::before, *::after {
   box-sizing: border-box;
