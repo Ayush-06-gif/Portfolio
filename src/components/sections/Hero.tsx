@@ -184,6 +184,7 @@ export function Hero() {
         >
           {/* Left — Big Name + Role */}
           <motion.div
+            className="hero-left-content"
             style={{
               transform: `rotateY(${mousePos.x * 0.3}deg) rotateX(${-mousePos.y * 0.3}deg)`,
               transformStyle: "preserve-3d",
@@ -324,10 +325,10 @@ export function Hero() {
 
             {/* CTAs */}
             <motion.div
+              className="cta-container"
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 1.8, duration: 0.6 }}
-              style={{ display: "flex", flexWrap: "wrap", gap: "0.75rem", marginBottom: "2.5rem" }}
             >
               <a href="#projects" className="btn btn-primary">
                 <Sparkles style={{ width: 16, height: 16 }} />
@@ -344,10 +345,10 @@ export function Hero() {
 
             {/* Tech Stack Pills */}
             <motion.div
+              className="tech-pills-container"
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ delay: 2.0, duration: 0.6 }}
-              style={{ display: "flex", flexWrap: "wrap", gap: "0.5rem" }}
             >
               {heroData.techIcons.map((tech, i) => (
                 <motion.div
@@ -588,39 +589,88 @@ export function Hero() {
           0% { transform: scale(1); opacity: 0.7; }
           100% { transform: scale(1.05); opacity: 1; }
         }
+        
+        .hero-left-content {
+          display: flex;
+          flex-direction: column;
+          align-items: flex-start;
+          text-align: left;
+        }
+
+        .cta-container {
+          display: flex;
+          flex-wrap: wrap;
+          gap: 0.75rem;
+          margin-bottom: 2.5rem;
+          justify-content: flex-start;
+        }
+
+        .tech-pills-container {
+          display: flex;
+          flex-wrap: wrap;
+          gap: 0.5rem;
+          justify-content: flex-start;
+        }
+
         @media (min-width: 768px) {
           .hero-grid {
             padding: 0 2rem !important;
           }
         }
-        @media (max-width: 1023px) {
-          .hero-image-container {
-            margin-top: 2rem;
-            order: 2;
-          }
-        }
+
         @media (min-width: 1024px) {
           .hero-grid {
             padding: 0 3rem !important;
             grid-template-columns: 1fr 1fr !important;
           }
         }
+
+        /* Mobile Layout Fixes */
+        @media (max-width: 1023px) {
+          .hero-grid {
+            text-align: center;
+          }
+          .hero-left-content {
+            align-items: center;
+            text-align: center;
+          }
+          .cta-container, .tech-pills-container {
+            justify-content: center;
+          }
+          .hero-image-container {
+            margin-top: 2rem;
+            order: 2;
+            /* CRITICAL FIX: Give it a real height on mobile so absolute children don't overflow */
+            min-height: 400px; 
+            width: 100%;
+          }
+        }
+
         @media (max-width: 768px) {
           .hero-grid {
             padding: 0 1rem !important;
             gap: 1.5rem !important;
           }
           .hero-image-container {
-            max-height: 280px;
+            min-height: 350px;
           }
         }
+
         @media (max-width: 480px) {
           .hero-grid {
             padding: 0 0.75rem !important;
             gap: 1rem !important;
           }
           .hero-image-container {
-            max-height: 220px;
+            min-height: 320px;
+          }
+          .cta-container {
+            flex-direction: column;
+            width: 100%;
+          }
+          .cta-container .btn {
+            width: 100%;
+            justify-content: center;
           }
         }
       `}</style>
