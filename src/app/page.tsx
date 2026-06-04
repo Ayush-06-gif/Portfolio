@@ -7,6 +7,7 @@ import { ArrowUp } from "lucide-react";
 import { LoadingScreen } from "@/components/layout/LoadingScreen";
 import { Navbar } from "@/components/layout/Navbar";
 import { DarkBackground } from "@/components/layout/DarkBackground";
+import { LightBackground } from "@/components/layout/LightBackground";
 import { CustomCursor } from "@/components/layout/CustomCursor";
 import { SmoothScroll } from "@/components/layout/SmoothScroll";
 import { Hero } from "@/components/sections/Hero";
@@ -113,6 +114,7 @@ export default function Home() {
   return (
     <SmoothScroll>
       <DarkBackground />
+      <LightBackground />
       {/* Custom Cursor */}
       <CustomCursor />
 

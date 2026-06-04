@@ -154,6 +154,14 @@ body {
   display: block;
 }
 
+.light-theme-bg {
+  display: block;
+}
+
+[data-theme='dark'] .light-theme-bg {
+  display: none;
+}
+
 img, video, svg {
   display: block;
   max-width: 100%;
