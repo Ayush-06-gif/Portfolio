@@ -234,6 +234,7 @@ export const skillCategories: SkillCategory[] = [
       { name: "Figma", icon: "https://skillicons.dev/icons?i=figma" },
       { name: "Canva", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/canva/canva-original.svg" },
       { name: "GitHub Actions", icon: "https://skillicons.dev/icons?i=githubactions" },
+      { name: "n8n", icon: "https://avatars.githubusercontent.com/n8n-io" },
     ],
   },
 ];
