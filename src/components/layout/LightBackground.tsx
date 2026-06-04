@@ -29,12 +29,57 @@ export function LightBackground() {
 
   return (
     <div className="light-theme-bg" style={{ position: "fixed", inset: 0, zIndex: -1, pointerEvents: "none", overflow: "hidden" }}>
-      {/* Light subtle gradient overlay for premium feel */}
-      <div
+      {/* Animated Glow Orbs (Aurora effect for light theme) */}
+      <motion.div
+        animate={{
+          x: ["-5%", "5%", "-5%"],
+          y: ["-5%", "5%", "-5%"],
+          scale: [1, 1.1, 1],
+        }}
+        transition={{ duration: 25, repeat: Infinity, ease: "easeInOut" }}
         style={{
           position: "absolute",
-          inset: 0,
-          background: "radial-gradient(circle at top left, rgba(199, 92, 44, 0.04), transparent 50%), radial-gradient(circle at bottom right, rgba(123, 158, 107, 0.04), transparent 50%)",
+          top: "-10%",
+          left: "-10%",
+          width: "60vw",
+          height: "60vw",
+          background: "radial-gradient(circle, rgba(199, 92, 44, 0.05) 0%, transparent 60%)", // Soft terracotta tint
+          filter: "blur(80px)",
+        }}
+      />
+
+      <motion.div
+        animate={{
+          x: ["5%", "-5%", "5%"],
+          y: ["5%", "-5%", "5%"],
+          scale: [1, 1.2, 1],
+        }}
+        transition={{ duration: 30, repeat: Infinity, ease: "easeInOut" }}
+        style={{
+          position: "absolute",
+          bottom: "-10%",
+          right: "-10%",
+          width: "70vw",
+          height: "70vw",
+          background: "radial-gradient(circle, rgba(123, 158, 107, 0.04) 0%, transparent 60%)", // Soft sage tint
+          filter: "blur(100px)",
+        }}
+      />
+
+      {/* Center ambient glow */}
+      <motion.div
+        animate={{
+          opacity: [0.3, 0.6, 0.3],
+        }}
+        transition={{ duration: 15, repeat: Infinity, ease: "easeInOut" }}
+        style={{
+          position: "absolute",
+          top: "30%",
+          left: "20%",
+          width: "60vw",
+          height: "40vw",
+          background: "radial-gradient(circle, rgba(212, 165, 116, 0.03) 0%, transparent 70%)", // Clay tint
+          filter: "blur(120px)",
         }}
       />
       
