@@ -98,7 +98,7 @@ export function Navbar() {
           right: 0,
           zIndex: 50,
           transition: "all 0.5s cubic-bezier(0.16, 1, 0.3, 1)",
-          background: isScrolled ? "rgba(253, 246, 236, 0.85)" : "transparent",
+          background: isScrolled ? "var(--nav-glass-bg)" : "transparent",
           backdropFilter: isScrolled ? "blur(20px)" : "none",
           WebkitBackdropFilter: isScrolled ? "blur(20px)" : "none",
           borderBottom: isScrolled ? "1px solid var(--border-subtle)" : "1px solid transparent",
@@ -146,7 +146,7 @@ export function Navbar() {
                 gap: "0.25rem",
                 padding: "0.375rem",
                 borderRadius: 100,
-                background: "rgba(245, 237, 224, 0.6)",
+                background: "var(--nav-pill-bg)",
                 border: "1px solid var(--border-subtle)",
               }}
               className="nav-desktop"
@@ -219,7 +219,7 @@ export function Navbar() {
               position: "fixed",
               inset: 0,
               zIndex: 40,
-              background: "rgba(253, 246, 236, 0.98)",
+              background: "var(--nav-mobile-bg)",
               backdropFilter: "blur(24px)",
               display: "flex",
               flexDirection: "column",
