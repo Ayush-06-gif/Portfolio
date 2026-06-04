@@ -491,8 +491,8 @@ export function Hero() {
               <motion.div
                 style={{
                   position: "relative",
-                  width: "100%",
-                  maxWidth: "380px", // slightly narrower to look good
+                  height: "100%",
+                  maxWidth: "100%", 
                   aspectRatio: "3/4",
                   transform: `rotateY(${mousePos.x * 0.1}deg) rotateX(${-mousePos.y * 0.1}deg)`,
                   transformStyle: "preserve-3d",
@@ -651,8 +651,7 @@ export function Hero() {
             max-height: 500px;
           }
           .hero-profile-img {
-            /* The image has the subject shifted to the left, so we anchor to 30% to center his face on narrow mobile screens */
-            object-position: 30% center;
+            object-position: 45% center;
           }
         }
 
@@ -666,7 +665,7 @@ export function Hero() {
             min-height: 320px;
           }
           .hero-profile-img {
-            object-position: 25% center;
+            object-position: 45% center;
           }
         }
 
@@ -688,7 +687,7 @@ export function Hero() {
             justify-content: center;
           }
           .hero-profile-img {
-            object-position: 20% center;
+            object-position: 45% center;
           }
         }
       `}</style>
