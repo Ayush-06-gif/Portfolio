@@ -182,6 +182,7 @@ export const skillCategories: SkillCategory[] = [
       { name: "NumPy", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/numpy/numpy-original.svg" },
       { name: "Pandas", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/pandas/pandas-original.svg" },
       { name: "Matplotlib", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/matplotlib/matplotlib-original.svg" },
+      { name: "Streamlit", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/streamlit/streamlit-original.svg" },
       { name: "OpenCV", icon: "https://skillicons.dev/icons?i=opencv" },
       { name: "SQLite", icon: "https://skillicons.dev/icons?i=sqlite" },
     ],
@@ -194,8 +195,8 @@ export const skillCategories: SkillCategory[] = [
       { name: "LangChain", icon: "https://avatars.githubusercontent.com/u/126733545?s=200&v=4" },
       { name: "OpenAI", icon: "https://upload.wikimedia.org/wikipedia/commons/0/04/ChatGPT_logo.svg" },
       { name: "Hugging Face", icon: "https://huggingface.co/front/assets/huggingface_logo-noborder.svg" },
-      { name: "LLMs", icon: "🦾" },
-      { name: "RAG", icon: "🔗" },
+      { name: "LLMs", icon: "https://img.icons8.com/color/48/artificial-intelligence.png" },
+      { name: "RAG", icon: "https://img.icons8.com/color/48/data-configuration.png" },
     ],
   },
   {
@@ -207,7 +208,7 @@ export const skillCategories: SkillCategory[] = [
       { name: "MySQL", icon: "https://skillicons.dev/icons?i=mysql" },
       { name: "PostgreSQL", icon: "https://skillicons.dev/icons?i=postgres" },
       { name: "Redis", icon: "https://skillicons.dev/icons?i=redis" },
-      { name: "ChromaDB", icon: "https://avatars.githubusercontent.com/u/108928014?s=200&v=4" },
+      { name: "ChromaDB", icon: "https://avatars.githubusercontent.com/chroma-core" },
     ],
   },
   {
@@ -232,7 +233,6 @@ export const skillCategories: SkillCategory[] = [
     skills: [
       { name: "Figma", icon: "https://skillicons.dev/icons?i=figma" },
       { name: "Canva", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/canva/canva-original.svg" },
-      { name: "Streamlit", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/streamlit/streamlit-original.svg" },
       { name: "GitHub Actions", icon: "https://skillicons.dev/icons?i=githubactions" },
     ],
   },
