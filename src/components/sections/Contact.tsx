@@ -55,7 +55,7 @@ const socialIconMap: Record<string, React.ReactNode> = {
   Mail: <Mail style={{ width: 20, height: 20 }} />,
 };
 
-type FormStatus = "idle" | "sending" | "success" | "error";
+type FormStatus = "idle" | "sending" | "success" | "error" | "validation-error";
 
 export function Contact() {
   const [formData, setFormData] = useState({
@@ -66,12 +66,13 @@ export function Contact() {
   });
   const [status, setStatus] = useState<FormStatus>("idle");
 
-  async function handleButtonClick(e: React.MouseEvent) {
+  async function handleSubmit(e: React.FormEvent) {
     e.preventDefault();
     
     // Manual validation to ensure the user knows if a field is empty
     if (!formData.name || !formData.email || !formData.subject || !formData.message) {
-      alert("Please fill out all fields before sending!");
+      setStatus("validation-error");
+      setTimeout(() => setStatus("idle"), 4000);
       return;
     }
 
@@ -225,7 +226,7 @@ export function Contact() {
             transition={{ duration: 0.7, delay: 0.1 }}
           >
             <div className="card paper-texture" style={{ padding: "2rem" }}>
-              <form style={{ display: "flex", flexDirection: "column", gap: "1.25rem" }}>
+              <form onSubmit={handleSubmit} style={{ display: "flex", flexDirection: "column", gap: "1.25rem" }}>
                 <div className="form-row" style={{ display: "grid", gridTemplateColumns: "1fr", gap: "1.25rem" }}>
                   <div>
                     <label htmlFor="name" className="text-caption" style={{ display: "block", marginBottom: 8 }}>Full Name</label>
@@ -245,8 +246,7 @@ export function Contact() {
                   <textarea id="message" name="message" value={formData.message} onChange={handleChange} rows={5} placeholder="Tell me about your project..." className="input" style={{ resize: "none" }} />
                 </div>
                 <button
-                  type="button"
-                  onClick={handleButtonClick}
+                  type="submit"
                   disabled={status === "sending"}
                   className="btn btn-primary"
                   style={{
@@ -274,7 +274,7 @@ export function Contact() {
 
               {/* Toast */}
               <AnimatePresence>
-                {(status === "success" || status === "error") && (
+                {(status === "success" || status === "error" || status === "validation-error") && (
                   <motion.div
                     initial={{ opacity: 0, y: 10 }}
                     animate={{ opacity: 1, y: 0 }}
@@ -294,6 +294,8 @@ export function Contact() {
                   >
                     {status === "success" ? (
                       <><CheckCircle style={{ width: 16, height: 16 }} /> Message sent successfully!</>
+                    ) : status === "validation-error" ? (
+                      <><XCircle style={{ width: 16, height: 16 }} /> Please fill out all fields before sending.</>
                     ) : (
                       <><XCircle style={{ width: 16, height: 16 }} /> Something went wrong. Please try again.</>
                     )}
