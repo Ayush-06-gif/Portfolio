@@ -187,7 +187,7 @@ export const skillCategories: SkillCategory[] = [
     label: "AI / GenAI",
     icon: "Bot",
     skills: [
-      { name: "LangChain", icon: "https://raw.githubusercontent.com/langchain-ai/langchain/master/docs/static/img/langchain_logo.png" },
+      { name: "LangChain", icon: "https://avatars.githubusercontent.com/u/126733545?s=200&v=4" },
       { name: "OpenAI", icon: "https://upload.wikimedia.org/wikipedia/commons/0/04/ChatGPT_logo.svg" },
       { name: "Hugging Face", icon: "https://huggingface.co/front/assets/huggingface_logo-noborder.svg" },
     ],
@@ -224,7 +224,7 @@ export const skillCategories: SkillCategory[] = [
     icon: "PenTool",
     skills: [
       { name: "Figma", icon: "https://skillicons.dev/icons?i=figma" },
-      { name: "Canva", icon: "https://upload.wikimedia.org/wikipedia/commons/0/08/Canva_icon_2021.svg" },
+      { name: "Canva", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/canva/canva-original.svg" },
       { name: "GitHub Actions", icon: "https://skillicons.dev/icons?i=githubactions" },
     ],
   },
