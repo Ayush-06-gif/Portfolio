@@ -55,7 +55,7 @@ const socialIconMap: Record<string, React.ReactNode> = {
   Mail: <Mail style={{ width: 20, height: 20 }} />,
 };
 
-type FormStatus = "idle" | "sending" | "success" | "error" | "validation-error";
+type FormStatus = "idle" | "sending" | "success" | "error" | "validation-error" | "email-error";
 
 export function Contact() {
   const [formData, setFormData] = useState({
@@ -65,8 +65,6 @@ export function Contact() {
     message: "",
   });
   const [status, setStatus] = useState<FormStatus>("idle");
-
-
 
   function handleChange(e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) {
     setFormData((prev) => ({ ...prev, [e.target.name]: e.target.value }));
@@ -217,6 +215,14 @@ export function Contact() {
                       return;
                     }
 
+                    // Email Format Validation
+                    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+                    if (!emailRegex.test(formData.email.trim())) {
+                      setStatus("email-error");
+                      setTimeout(() => setStatus("idle"), 4000);
+                      return;
+                    }
+
                     setStatus("sending");
 
                     fetch("https://api.web3forms.com/submit", {
@@ -279,7 +285,7 @@ export function Contact() {
 
               {/* Toast */}
               <AnimatePresence>
-                {(status === "success" || status === "error" || status === "validation-error") && (
+                {(status === "success" || status === "error" || status === "validation-error" || status === "email-error") && (
                   <motion.div
                     initial={{ opacity: 0, y: 10 }}
                     animate={{ opacity: 1, y: 0 }}
@@ -301,6 +307,8 @@ export function Contact() {
                       <><CheckCircle style={{ width: 16, height: 16 }} /> Message sent successfully!</>
                     ) : status === "validation-error" ? (
                       <><XCircle style={{ width: 16, height: 16 }} /> Please fill out all fields before sending.</>
+                    ) : status === "email-error" ? (
+                      <><XCircle style={{ width: 16, height: 16 }} /> Please enter a valid email address.</>
                     ) : (
                       <><XCircle style={{ width: 16, height: 16 }} /> Something went wrong. Please try again.</>
                     )}
