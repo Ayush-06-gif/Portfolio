@@ -524,6 +524,7 @@ export function Hero() {
               }}
             >
               <motion.div
+                className="hero-image-wrapper"
                 style={{
                   position: "relative",
                   height: "100%",
@@ -658,11 +659,19 @@ export function Hero() {
           .hero-grid {
             padding: 0 3rem !important;
             grid-template-columns: 1fr 1fr !important;
+            align-items: center;
           }
           .hero-image-container {
-             /* Prevent the image from becoming overwhelmingly large on wide monitors */
-             padding-left: 2rem;
-             max-height: 600px;
+             padding-left: 4rem;
+             max-height: 500px; /* Reduced from 600px */
+             display: flex;
+             justify-content: flex-end; /* Align closer to the right edge */
+          }
+          .hero-image-wrapper {
+             height: 85% !important; /* Scale down the photo to perfectly fit */
+          }
+          .hero-profile-img {
+             object-position: 45% 25%; /* Adjust alignment to perfectly frame the face on PC */
           }
         }
 
