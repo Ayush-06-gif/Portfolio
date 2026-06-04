@@ -12,7 +12,7 @@ export function LightBackground() {
 
   useEffect(() => {
     setMounted(true);
-    const generatedShapes = Array.from({ length: 30 }).map((_, i) => ({
+    const generatedShapes = Array.from({ length: 15 }).map((_, i) => ({
       id: i,
       type: ["dot", "circle", "cross"][Math.floor(Math.random() * 3)],
       size: Math.random() * 15 + 8, // Between 8px and 23px
@@ -38,26 +38,14 @@ export function LightBackground() {
         }}
       />
       
-      {/* Background Subtle Architect Grid */}
-      <div 
-        style={{
-          position: "absolute",
-          inset: 0,
-          backgroundImage: "linear-gradient(to right, rgba(138, 131, 120, 0.04) 1px, transparent 1px), linear-gradient(to bottom, rgba(138, 131, 120, 0.04) 1px, transparent 1px)",
-          backgroundSize: "80px 80px",
-          maskImage: "linear-gradient(to bottom, transparent, black 15%, black 85%, transparent)",
-          WebkitMaskImage: "linear-gradient(to bottom, transparent, black 15%, black 85%, transparent)",
-        }}
-      />
-
       {/* Floating Geometric Shapes */}
       {shapes.map((s) => (
         <motion.div
           key={s.id}
           animate={{
-            y: ["-15px", "15px", "-15px"],
-            x: ["-5px", "5px", "-5px"],
-            rotate: s.type === "cross" ? [0, 90, 0] : 0,
+            y: ["-50px", "50px", "-50px"],
+            x: ["-30px", "30px", "-30px"],
+            rotate: [0, 180, 360],
           }}
           transition={{
             duration: s.duration,
