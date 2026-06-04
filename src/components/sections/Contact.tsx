@@ -70,7 +70,7 @@ export function Contact() {
     e.preventDefault();
     
     // Manual validation to ensure the user knows if a field is empty
-    if (!formData.name || !formData.email || !formData.subject || !formData.message) {
+    if (!formData.name.trim() || !formData.email.trim() || !formData.subject.trim() || !formData.message.trim()) {
       setStatus("validation-error");
       setTimeout(() => setStatus("idle"), 4000);
       return;
@@ -97,9 +97,11 @@ export function Contact() {
         setStatus("success");
         setFormData({ name: "", email: "", subject: "", message: "" });
       } else {
+        console.error("Web3Forms API Error:", result);
         setStatus("error");
       }
     } catch (error) {
+      console.error("Fetch Error:", error);
       setStatus("error");
     }
     
@@ -247,7 +249,6 @@ export function Contact() {
                 </div>
                 <button
                   type="submit"
-                  onClick={handleSubmit as any}
                   disabled={status === "sending"}
                   className="btn btn-primary"
                   style={{
