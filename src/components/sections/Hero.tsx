@@ -668,7 +668,7 @@ export function Hero() {
              justify-content: flex-end; /* Align closer to the right edge */
           }
           .hero-image-wrapper {
-             height: 85% !important; /* Scale down the photo to perfectly fit */
+             height: 92% !important; /* Scaled up slightly to be a bit bigger */
           }
           .hero-profile-img {
              object-position: 45% 25%; /* Adjust alignment to perfectly frame the face on PC */

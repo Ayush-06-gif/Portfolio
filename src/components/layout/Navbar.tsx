@@ -170,6 +170,7 @@ export function Navbar() {
 
             {/* Right side */}
             <div className="nav-desktop" style={{ display: "none", alignItems: "center", gap: "0.75rem" }}>
+              <ThemeToggle />
               <a
                 href="/resume.pdf"
                 download="Ayush_Raj_Resume.pdf"
@@ -180,7 +181,6 @@ export function Navbar() {
                 <Download style={{ width: 14, height: 14 }} />
                 Resume
               </a>
-              <ThemeToggle />
             </div>
 
             {/* Mobile toggles */}
