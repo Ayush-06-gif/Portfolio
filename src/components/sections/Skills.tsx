@@ -268,7 +268,15 @@ export function Skills() {
                         }}
                         className="skill-pill"
                       >
-                        <span style={{ fontSize: "1rem" }} aria-hidden="true">{skill.icon}</span>
+                        {skill.icon.startsWith("http") ? (
+                          <img 
+                            src={skill.icon} 
+                            alt={`${skill.name} icon`} 
+                            style={{ width: "1.25rem", height: "1.25rem", objectFit: "contain" }} 
+                          />
+                        ) : (
+                          <span style={{ fontSize: "1rem" }} aria-hidden="true">{skill.icon}</span>
+                        )}
                         <span>{skill.name}</span>
 
                         {quip && (
