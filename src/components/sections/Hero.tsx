@@ -474,6 +474,7 @@ export function Hero() {
 
             {/* --- Layer 2: The Image --- */}
             <motion.div
+              className="hero-image-layer"
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 1, delay: 0.6 }}
@@ -484,7 +485,6 @@ export function Hero() {
                 display: "flex",
                 justifyContent: "center",
                 alignItems: "center",
-                paddingLeft: "15%", // Shifts the image container to the right
                 // Multiply blend mode completely eliminates white backgrounds!
                 mixBlendMode: "multiply",
               }}
@@ -612,6 +612,10 @@ export function Hero() {
           justify-content: flex-start;
         }
 
+        .hero-image-layer {
+          padding-left: 15%;
+        }
+
         @media (min-width: 768px) {
           .hero-grid {
             padding: 0 2rem !important;
@@ -643,6 +647,9 @@ export function Hero() {
             /* CRITICAL FIX: Give it a real height on mobile so absolute children don't overflow */
             min-height: 400px; 
             width: 100%;
+          }
+          .hero-image-layer {
+            padding-left: 0;
           }
         }
 
