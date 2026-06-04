@@ -196,7 +196,7 @@ export function Hero() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.5, duration: 0.6 }}
-              style={{ marginBottom: "1.5rem" }}
+              style={{ marginBottom: "1.5rem", z: 20 }}
             >
               <span className="badge badge-sage" style={{ gap: "0.5rem" }}>
                 <span style={{
@@ -235,6 +235,7 @@ export function Hero() {
                 color: "var(--stone)",
                 marginBottom: "0.75rem",
                 fontWeight: 400,
+                z: 30,
               }}
             >
               {heroData.greeting}
@@ -263,8 +264,10 @@ export function Hero() {
                   style={{
                     display: "inline-block",
                     perspective: 500,
+                    z: 50,
                     ...(char === " " ? { width: "0.25em" } : {}),
                   }}
+                  whileHover={{ scale: 1.1, color: "var(--terracotta)", z: 70 }}
                 >
                   {char === " " ? "\u00A0" : char}
                 </motion.span>
@@ -275,7 +278,7 @@ export function Hero() {
                 animate={{ opacity: 1, scale: 1 }}
                 transition={{ delay: 1.2, type: "spring", stiffness: 300 }}
                 onClick={handleDotClick}
-                whileHover={{ scale: 1.3 }}
+                whileHover={{ scale: 1.5, z: 80 }}
                 whileTap={{ scale: 0.8, rotate: 180 }}
                 style={{
                   color: "var(--terracotta)",
@@ -284,6 +287,7 @@ export function Hero() {
                   cursor: "pointer",
                   userSelect: "none",
                   transition: "color 0.3s",
+                  z: 50,
                 }}
                 title={dotClickCount > 0 ? `${5 - dotClickCount} more...` : undefined}
               >
@@ -302,6 +306,7 @@ export function Hero() {
                 color: "var(--charcoal)",
                 minHeight: "2rem",
                 marginBottom: "1.5rem",
+                z: 40,
               }}
             >
               <TextReveal texts={allRoles} />
@@ -318,6 +323,7 @@ export function Hero() {
                 maxWidth: 580,
                 lineHeight: 1.7,
                 marginBottom: "2rem",
+                z: 25,
               }}
             >
               {heroData.bio}
@@ -329,18 +335,19 @@ export function Hero() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 1.8, duration: 0.6 }}
+              style={{ z: 60 }}
             >
-              <a href="#projects" className="btn btn-primary">
+              <motion.a whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }} href="#projects" className="btn btn-primary">
                 <Sparkles style={{ width: 16, height: 16 }} />
                 View Projects
-              </a>
-              <a href="/resume.pdf" download="Ayush_Raj_Resume.pdf" className="btn btn-secondary">
+              </motion.a>
+              <motion.a whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }} href="/resume.pdf" download="Ayush_Raj_Resume.pdf" className="btn btn-secondary">
                 <ArrowDown style={{ width: 16, height: 16 }} />
                 Download Resume
-              </a>
-              <a href="#contact" className="btn btn-ghost">
+              </motion.a>
+              <motion.a whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }} href="#contact" className="btn btn-ghost">
                 Contact Me
-              </a>
+              </motion.a>
             </motion.div>
 
             {/* Tech Stack Pills */}
@@ -349,6 +356,7 @@ export function Hero() {
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ delay: 2.0, duration: 0.6 }}
+              style={{ z: 45 }}
             >
               {heroData.techIcons.map((tech, i) => (
                 <motion.div
@@ -360,9 +368,9 @@ export function Hero() {
                     type: "spring",
                     stiffness: 200,
                   }}
-                  whileHover={{ y: -3, scale: 1.05 }}
+                  whileHover={{ y: -5, scale: 1.15, rotate: [-2, 2, 0] }}
                   className="badge badge-neutral"
-                  style={{ cursor: "default" }}
+                  style={{ cursor: "pointer", z: 50 }}
                 >
                   <span aria-hidden="true">{tech.icon}</span>
                   {tech.name}
@@ -380,6 +388,7 @@ export function Hero() {
               alignItems: "center",
               width: "100%",
               height: "100%",
+              transformStyle: "preserve-3d",
             }}
             className="hero-image-container"
           >
@@ -392,6 +401,8 @@ export function Hero() {
                 position: "absolute",
                 inset: 0,
                 zIndex: 0,
+                transformStyle: "preserve-3d",
+                transform: `rotateY(${mousePos.x * 0.05}deg) rotateX(${-mousePos.y * 0.05}deg) translateZ(-20px)`,
               }}
             >
               {/* Subtle orange radial glow */}
@@ -421,6 +432,7 @@ export function Hero() {
                   initial={{ opacity: 0, scale: 0 }}
                   animate={{ opacity: [0.4, 0.8, 0.4], y: [0, -20, 0], scale: 1 }}
                   transition={{ duration: 5, repeat: Infinity, delay: node.delay, ease: "easeInOut" }}
+                  whileHover={{ scale: 2, backgroundColor: "#fff", boxShadow: "0 0 25px rgba(255,255,255,0.8)" }}
                   style={{
                     position: "absolute",
                     width: node.size,
@@ -431,6 +443,7 @@ export function Hero() {
                     left: node.left,
                     boxShadow: "0 0 15px rgba(196, 106, 53, 0.6)",
                     zIndex: 0,
+                    cursor: "pointer",
                   }}
                 />
               ))}
@@ -489,6 +502,7 @@ export function Hero() {
                 alignItems: "center",
                 // Multiply blend mode completely eliminates white backgrounds!
                 mixBlendMode: "multiply",
+                transformStyle: "preserve-3d",
               }}
             >
               <motion.div
@@ -497,7 +511,7 @@ export function Hero() {
                   height: "100%",
                   maxWidth: "100%", 
                   aspectRatio: "3/4",
-                  transform: `rotateY(${mousePos.x * 0.1}deg) rotateX(${-mousePos.y * 0.1}deg)`,
+                  transform: `rotateY(${mousePos.x * 0.15}deg) rotateX(${-mousePos.y * 0.15}deg) translateZ(80px)`,
                   transformStyle: "preserve-3d",
                   display: "flex",
                   justifyContent: "center",
@@ -508,7 +522,7 @@ export function Hero() {
                   maskComposite: "intersect",
                   WebkitMaskComposite: "source-in",
                 }}
-                whileHover={{ scale: 1.02, y: -5 }}
+                whileHover={{ scale: 1.05, rotateZ: 1 }}
                 transition={{ type: "spring", stiffness: 300, damping: 20 }}
               >
                 <img
