@@ -475,8 +475,11 @@ export function Hero() {
             {/* --- Layer 2: The Image --- */}
             <motion.div
               initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 1, delay: 0.6 }}
+              animate={{ opacity: 1, y: [0, -12, 0] }}
+              transition={{ 
+                opacity: { duration: 1, delay: 0.6 },
+                y: { duration: 6, repeat: Infinity, ease: "easeInOut", delay: 0.6 }
+              }}
               style={{
                 position: "absolute",
                 inset: 0,
@@ -610,7 +613,7 @@ export function Hero() {
           width: 100%;
           height: 100%;
           object-fit: cover;
-          object-position: center; /* Default desktop */
+          object-position: 45% center; /* Align face properly across all devices */
         }
 
         @media (min-width: 768px) {
@@ -625,8 +628,9 @@ export function Hero() {
             grid-template-columns: 1fr 1fr !important;
           }
           .hero-image-container {
-             /* Slightly push right on desktop for spacing */
+             /* Prevent the image from becoming overwhelmingly large on wide monitors */
              padding-left: 2rem;
+             max-height: 600px;
           }
         }
 
@@ -650,9 +654,6 @@ export function Hero() {
             min-height: 350px; 
             max-height: 500px;
           }
-          .hero-profile-img {
-            object-position: 45% center;
-          }
         }
 
         @media (max-width: 768px) {
@@ -663,9 +664,6 @@ export function Hero() {
           .hero-image-container {
             height: 45vh;
             min-height: 320px;
-          }
-          .hero-profile-img {
-            object-position: 45% center;
           }
         }
 
