@@ -474,7 +474,6 @@ export function Hero() {
 
             {/* --- Layer 2: The Image --- */}
             <motion.div
-              className="hero-image-layer"
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 1, delay: 0.6 }}
@@ -512,12 +511,7 @@ export function Hero() {
                 <img
                   src="/images/hero-image.png"
                   alt="Ayush Raj"
-                  style={{
-                    width: "100%",
-                    height: "100%",
-                    objectFit: "cover", // fills the container beautifully
-                    objectPosition: "center", // centers the alignment perfectly
-                  }}
+                  className="hero-profile-img"
                 />
               </motion.div>
             </motion.div>
@@ -612,8 +606,11 @@ export function Hero() {
           justify-content: flex-start;
         }
 
-        .hero-image-layer {
-          padding-left: 15%;
+        .hero-profile-img {
+          width: 100%;
+          height: 100%;
+          object-fit: cover;
+          object-position: center; /* Default desktop */
         }
 
         @media (min-width: 768px) {
@@ -626,6 +623,10 @@ export function Hero() {
           .hero-grid {
             padding: 0 3rem !important;
             grid-template-columns: 1fr 1fr !important;
+          }
+          .hero-image-container {
+             /* Slightly push right on desktop for spacing */
+             padding-left: 2rem;
           }
         }
 
@@ -644,9 +645,14 @@ export function Hero() {
           .hero-image-container {
             margin-top: 2rem;
             order: 2;
-            /* CRITICAL FIX: Give it a real height on mobile so absolute children don't overflow */
-            min-height: 400px; 
             width: 100%;
+            height: 50vh;
+            min-height: 350px; 
+            max-height: 500px;
+          }
+          .hero-profile-img {
+            /* The image has the subject shifted to the left, so we anchor to 30% to center his face on narrow mobile screens */
+            object-position: 30% center;
           }
         }
 
@@ -656,7 +662,11 @@ export function Hero() {
             gap: 1.5rem !important;
           }
           .hero-image-container {
-            min-height: 350px;
+            height: 45vh;
+            min-height: 320px;
+          }
+          .hero-profile-img {
+            object-position: 25% center;
           }
         }
 
@@ -666,7 +676,8 @@ export function Hero() {
             gap: 1rem !important;
           }
           .hero-image-container {
-            min-height: 320px;
+            height: 40vh;
+            min-height: 280px;
           }
           .cta-container {
             flex-direction: column;
@@ -675,6 +686,9 @@ export function Hero() {
           .cta-container .btn {
             width: 100%;
             justify-content: center;
+          }
+          .hero-profile-img {
+            object-position: 20% center;
           }
         }
       `}</style>
