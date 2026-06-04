@@ -281,6 +281,7 @@ export function Hero() {
                     display: "inline-block",
                     perspective: 500,
                     z: 50,
+                    color: "var(--ink)",
                     ...(char === " " ? { width: "0.25em" } : {}),
                   }}
                   whileHover={{ scale: 1.1, color: "var(--terracotta)", z: 70 }}
@@ -294,7 +295,7 @@ export function Hero() {
                 animate={{ opacity: 1, scale: 1 }}
                 transition={{ delay: 1.2, type: "spring", stiffness: 300 }}
                 onClick={handleDotClick}
-                whileHover={{ scale: 1.5, z: 80 }}
+                whileHover={{ scale: 1.5, z: 80, color: "var(--terracotta-light)" }}
                 whileTap={{ scale: 0.8, rotate: 180 }}
                 style={{
                   color: "var(--terracotta)",
