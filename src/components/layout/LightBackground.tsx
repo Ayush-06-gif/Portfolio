@@ -51,9 +51,21 @@ function InteractiveDots() {
 
 export function LightBackground() {
   const [mounted, setMounted] = useState(false);
+  const [shapes, setShapes] = useState<any[]>([]);
   
   useEffect(() => {
     setMounted(true);
+    const generatedShapes = Array.from({ length: 12 }).map((_, i) => ({
+      id: i,
+      type: ["dot", "circle", "cross"][Math.floor(Math.random() * 3)],
+      size: Math.random() * 8 + 6, // Between 6px and 14px
+      top: `${Math.random() * 100}vh`,
+      left: `${Math.random() * 100}vw`,
+      duration: Math.random() * 15 + 20, // 20s to 35s
+      delay: Math.random() * 5,
+      color: ["var(--terracotta)", "var(--sage)", "var(--clay)", "var(--dusty-rose)"][Math.floor(Math.random() * 4)],
+    }));
+    setShapes(generatedShapes);
   }, []);
 
   if (!mounted) return null;
@@ -113,7 +125,49 @@ export function LightBackground() {
         />
       </div>
 
-      {/* 2. Interactive Dot Matrix Overlay */}
+      {/* 2. Floating Geometric Shapes (Crosses & Dots) */}
+      {shapes.map((s) => (
+        <motion.div
+          key={s.id}
+          animate={{
+            y: ["-50px", "50px", "-50px"],
+            x: ["-30px", "30px", "-30px"],
+            rotate: [0, 180, 360],
+          }}
+          transition={{
+            duration: s.duration,
+            repeat: Infinity,
+            delay: s.delay,
+            ease: "easeInOut",
+          }}
+          style={{
+            position: "absolute",
+            top: s.top,
+            left: s.left,
+            width: s.size,
+            height: s.size,
+            opacity: 0.35, // Soft visibility
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "center",
+          }}
+        >
+          {s.type === "dot" && (
+            <div style={{ width: "100%", height: "100%", borderRadius: "50%", backgroundColor: s.color }} />
+          )}
+          {s.type === "circle" && (
+            <div style={{ width: "100%", height: "100%", borderRadius: "50%", border: `2px solid ${s.color}` }} />
+          )}
+          {s.type === "cross" && (
+            <div style={{ position: "relative", width: "100%", height: "100%" }}>
+              <div style={{ position: "absolute", top: "50%", left: 0, width: "100%", height: 2, backgroundColor: s.color, transform: "translateY(-50%)" }} />
+              <div style={{ position: "absolute", left: "50%", top: 0, height: "100%", width: 2, backgroundColor: s.color, transform: "translateX(-50%)" }} />
+            </div>
+          )}
+        </motion.div>
+      ))}
+
+      {/* 3. Interactive Dot Matrix Overlay */}
       <InteractiveDots />
       
       {/* Top/Bottom Fading Mask to ensure the dots don't abruptly end at the screen edge on mobile */}
