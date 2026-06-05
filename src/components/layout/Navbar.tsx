@@ -104,9 +104,9 @@ export function Navbar() {
           borderBottom: isScrolled ? "1px solid var(--border-subtle)" : "1px solid transparent",
         }}
       >
-        <div style={{ maxWidth: 1200, margin: "0 auto", padding: "0 1.5rem" }}>
-          <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", height: 72 }}>
-            {/* Logo */}
+        <div className="nav-container" style={{ width: "100%", padding: "0 1.5rem" }}>
+          <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", height: 72, position: "relative" }}>
+            {/* Logo — Left */}
             <a
               href="#"
               style={{
@@ -117,6 +117,8 @@ export function Navbar() {
                 display: "flex",
                 alignItems: "baseline",
                 gap: "0.15rem",
+                zIndex: 2,
+                flexShrink: 0,
               }}
               aria-label="Go to homepage"
             >
@@ -138,7 +140,7 @@ export function Navbar() {
               </motion.span>
             </a>
 
-            {/* Desktop Links — Magnetic */}
+            {/* Desktop Links — Truly Centered */}
             <div
               style={{
                 display: "none",
@@ -148,6 +150,9 @@ export function Navbar() {
                 borderRadius: 100,
                 background: "var(--nav-pill-bg)",
                 border: "1px solid var(--border-subtle)",
+                position: "absolute",
+                left: "50%",
+                transform: "translateX(-50%)",
               }}
               className="nav-desktop"
             >
@@ -168,8 +173,8 @@ export function Navbar() {
               ))}
             </div>
 
-            {/* Right side */}
-            <div className="nav-desktop" style={{ display: "none", alignItems: "center", gap: "0.75rem" }}>
+            {/* Right side — Theme Toggle + Resume */}
+            <div className="nav-desktop" style={{ display: "none", alignItems: "center", gap: "0.75rem", zIndex: 2, flexShrink: 0 }}>
               <ThemeToggle />
               <a
                 href="/resume.pdf"
@@ -267,6 +272,13 @@ export function Navbar() {
         @media (min-width: 768px) {
           .nav-desktop { display: flex !important; }
           .nav-mobile-toggle { display: none !important; }
+          .nav-container { padding: 0 2rem !important; }
+        }
+        @media (min-width: 1024px) {
+          .nav-container { padding: 0 5% !important; }
+        }
+        @media (min-width: 1440px) {
+          .nav-container { padding: 0 8% !important; }
         }
       `}</style>
     </>
