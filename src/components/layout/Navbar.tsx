@@ -105,7 +105,7 @@ export function Navbar() {
         }}
       >
         <div className="nav-container" style={{ width: "100%", padding: "0 1.5rem" }}>
-          <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", height: 72, position: "relative" }}>
+          <div className="nav-inner" style={{ display: "flex", alignItems: "center", justifyContent: "space-between", height: 72 }}>
             {/* Logo — Left */}
             <a
               href="#"
@@ -117,7 +117,6 @@ export function Navbar() {
                 display: "flex",
                 alignItems: "baseline",
                 gap: "0.15rem",
-                zIndex: 2,
                 flexShrink: 0,
               }}
               aria-label="Go to homepage"
@@ -140,7 +139,7 @@ export function Navbar() {
               </motion.span>
             </a>
 
-            {/* Desktop Links — Truly Centered */}
+            {/* Desktop Links — Center column */}
             <div
               style={{
                 display: "none",
@@ -150,9 +149,6 @@ export function Navbar() {
                 borderRadius: 100,
                 background: "var(--nav-pill-bg)",
                 border: "1px solid var(--border-subtle)",
-                position: "absolute",
-                left: "50%",
-                transform: "translateX(-50%)",
               }}
               className="nav-desktop"
             >
@@ -173,8 +169,8 @@ export function Navbar() {
               ))}
             </div>
 
-            {/* Right side — Theme Toggle + Resume */}
-            <div className="nav-desktop" style={{ display: "none", alignItems: "center", gap: "0.75rem", zIndex: 2, flexShrink: 0 }}>
+            {/* Right side — Theme Toggle + Resume (Desktop only) */}
+            <div className="nav-desktop" style={{ display: "none", alignItems: "center", gap: "0.75rem", flexShrink: 0 }}>
               <ThemeToggle />
               <a
                 href="/resume.pdf"
@@ -189,13 +185,12 @@ export function Navbar() {
             </div>
 
             {/* Mobile toggles */}
-            <div style={{ display: "flex", alignItems: "center", gap: "0.5rem" }}>
-              <div className="nav-mobile-toggle" style={{ display: "flex", alignItems: "center" }}>
+            <div className="nav-mobile-only" style={{ display: "flex", alignItems: "center", gap: "0.5rem" }}>
+              <div style={{ display: "flex", alignItems: "center" }}>
                 <ThemeToggle />
               </div>
               <button
                 onClick={() => setIsMenuOpen(!isMenuOpen)}
-                className="nav-mobile-toggle"
                 style={{
                   display: "flex",
                   padding: 8,
@@ -271,8 +266,20 @@ export function Navbar() {
       <style jsx global>{`
         @media (min-width: 768px) {
           .nav-desktop { display: flex !important; }
-          .nav-mobile-toggle { display: none !important; }
+          .nav-mobile-only { display: none !important; }
           .nav-container { padding: 0 2rem !important; }
+          .nav-inner {
+            display: grid !important;
+            grid-template-columns: auto 1fr auto;
+            align-items: center;
+            gap: 1rem;
+          }
+          .nav-inner .nav-desktop:first-of-type {
+            justify-self: center;
+          }
+          .nav-inner .nav-desktop:last-of-type {
+            justify-self: end;
+          }
         }
         @media (min-width: 1024px) {
           .nav-container { padding: 0 5% !important; }
