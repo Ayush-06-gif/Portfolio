@@ -194,8 +194,9 @@ export function About() {
               viewport={{ once: true }}
               transition={{ delay: 0.1 + i * 0.1, duration: 0.6 }}
               whileHover={{ y: -4, scale: 1.02 }}
+              style={{ height: "100%" }}
             >
-              <div className="card" style={{ textAlign: "center", padding: "1.75rem 1.5rem" }}>
+              <div className="card" style={{ textAlign: "center", padding: "1.75rem 1rem", height: "100%", display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center" }}>
                 <div
                   style={{
                     width: 44,
@@ -206,7 +207,7 @@ export function About() {
                     display: "flex",
                     alignItems: "center",
                     justifyContent: "center",
-                    margin: "0 auto 0.75rem",
+                    marginBottom: "0.75rem",
                   }}
                 >
                   {iconMap[stat.icon]}
@@ -221,7 +222,7 @@ export function About() {
                 }}>
                   {stat.value}
                 </p>
-                <p className="text-caption" style={{ fontSize: "0.65rem" }}>
+                <p className="text-caption stat-label" style={{ fontSize: "0.65rem", whiteSpace: "nowrap" }}>
                   {stat.label}
                 </p>
               </div>
