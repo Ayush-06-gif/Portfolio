@@ -211,12 +211,13 @@ export function About() {
                 >
                   {iconMap[stat.icon]}
                 </div>
-                <p style={{
+                <p className="stat-value" style={{
                   fontFamily: "var(--font-playfair), serif",
                   fontSize: "1.75rem",
                   fontWeight: 700,
                   color: "var(--ink)",
                   marginBottom: "0.25rem",
+                  whiteSpace: "nowrap",
                 }}>
                   {stat.value}
                 </p>
@@ -356,6 +357,7 @@ export function About() {
         @media (max-width: 480px) {
           .stats-grid { gap: 0.625rem !important; }
           .about-bottom { gap: 1rem !important; }
+          .stat-value { font-size: 1.25rem !important; }
         }
       `}</style>
     </section>
