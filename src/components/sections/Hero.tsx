@@ -186,7 +186,8 @@ export function Hero() {
       >
         <div
           style={{
-            maxWidth: 1200,
+            width: "100%",
+            maxWidth: "100%",
             margin: "0 auto",
             padding: "0 1.5rem",
             display: "grid",
@@ -657,21 +658,27 @@ export function Hero() {
 
         @media (min-width: 1024px) {
           .hero-grid {
-            padding: 0 3rem !important;
+            padding: 0 5% !important;
             grid-template-columns: 1fr 1fr !important;
             align-items: center;
           }
           .hero-image-container {
              padding-left: 4rem;
-             max-height: 500px; /* Reduced from 600px */
+             max-height: 500px;
              display: flex;
-             justify-content: flex-end; /* Align closer to the right edge */
+             justify-content: flex-end;
           }
           .hero-image-wrapper {
-             height: 92% !important; /* Scaled up slightly to be a bit bigger */
+             height: 92% !important;
           }
           .hero-profile-img {
-             object-position: 45% 25%; /* Adjust alignment to perfectly frame the face on PC */
+             object-position: 45% 25%;
+          }
+        }
+
+        @media (min-width: 1440px) {
+          .hero-grid {
+            padding: 0 8% !important;
           }
         }
 
