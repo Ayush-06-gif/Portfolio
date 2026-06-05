@@ -20,7 +20,7 @@ function useTextScramble(text: string, isInView: boolean) {
     hasRun.current = true;
 
     const chars = text.split("");
-    const totalDuration = 1200; // ms (slower scramble)
+    const totalDuration = 900; // ms (slower scramble)
     const perChar = totalDuration / chars.length;
     let iteration = 0;
 
@@ -68,7 +68,7 @@ export function SectionHeading({
       initial={{ opacity: 0, y: 40, filter: "blur(10px)", scale: 0.95 }}
       whileInView={{ opacity: 1, y: 0, filter: "blur(0px)", scale: 1 }}
       viewport={{ once: true, margin: "-100px" }}
-      transition={{ duration: 0.85, ease: [0.16, 1, 0.3, 1] }}
+      transition={{ duration: 1.2, ease: [0.16, 1, 0.3, 1] }}
       style={{
         marginBottom: "4rem",
         textAlign: align,
@@ -79,7 +79,7 @@ export function SectionHeading({
           initial={{ width: 0 }}
           whileInView={{ width: 32 }}
           viewport={{ once: true }}
-          transition={{ duration: 0.65, delay: 0.25, ease: "easeOut" }}
+          transition={{ duration: 0.8, delay: 0.3, ease: "easeOut" }}
           style={{
             height: 2,
             background: "var(--terracotta)",
@@ -101,7 +101,7 @@ export function SectionHeading({
           initial={{ width: 0 }}
           whileInView={{ width: 32 }}
           viewport={{ once: true }}
-          transition={{ duration: 0.65, delay: 0.25, ease: "easeOut" }}
+          transition={{ duration: 0.8, delay: 0.3, ease: "easeOut" }}
           style={{
             height: 2,
             background: "var(--terracotta)",
@@ -126,7 +126,7 @@ export function SectionHeading({
           initial={{ opacity: 0, y: 10 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          transition={{ delay: 0.45, duration: 0.65, ease: "easeOut" }}
+          transition={{ delay: 0.6, duration: 0.8, ease: "easeOut" }}
           style={{
             fontFamily: "var(--font-sans)",
             fontSize: "1.05rem",

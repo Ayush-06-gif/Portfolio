@@ -181,7 +181,7 @@ export function Hero() {
 
       {/* Content */}
       <motion.div
-        style={{ y, opacity }}
+        style={{ y, opacity, width: "100%" }}
         ref={heroCardRef}
       >
         <div
