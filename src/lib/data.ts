@@ -514,7 +514,7 @@ export const githubStatsData: GitHubStatsData = {
     },
     {
       title: "GitHub Streak",
-      url: "https://github-readme-streak-stats.herokuapp.com/?user=Ayush-06-gif&theme=radical&background=0d1117&hide_border=true&ring=3b82f6&fire=06b6d4&currStreakLabel=3b82f6",
+      url: "https://streak-stats.demolab.com/?user=Ayush-06-gif&theme=radical&background=0d1117&hide_border=true&ring=3b82f6&fire=06b6d4&currStreakLabel=3b82f6",
       alt: "Ayush Raj's GitHub Streak",
     },
   ],
