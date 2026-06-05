@@ -185,7 +185,7 @@ export function About() {
         </div>
 
         {/* Stats Row */}
-        <div className="stats-grid" style={{ display: "grid", gridTemplateColumns: "repeat(2, 1fr)", gap: "1rem", marginBottom: "4rem" }}>
+        <div className="stats-grid" style={{ display: "grid", gridTemplateColumns: "repeat(2, 1fr)", gridAutoRows: "1fr", gap: "1rem", marginBottom: "4rem" }}>
           {aboutData.stats.map((stat, i) => (
             <motion.div
               key={stat.label}
