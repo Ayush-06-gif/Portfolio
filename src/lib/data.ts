@@ -504,17 +504,17 @@ export const githubStatsData: GitHubStatsData = {
   cards: [
     {
       title: "GitHub Stats",
-      url: "https://github-readme-stats.vercel.app/api?username=Ayush-06-gif&theme=great-gatsby&hide_border=false&include_all_commits=true&count_private=true",
+      url: "https://github-readme-stats-eight-theta.vercel.app/api?username=Ayush-06-gif&show_icons=true&theme=radical&bg_color=0d1117&hide_border=true&title_color=3b82f6&icon_color=06b6d4&text_color=a1a1aa&v=2",
       alt: "Ayush Raj's GitHub Stats",
     },
     {
       title: "Top Languages",
-      url: "https://github-readme-stats.vercel.app/api/top-langs/?username=Ayush-06-gif&theme=great-gatsby&hide_border=false&include_all_commits=true&count_private=true&layout=compact",
+      url: "https://github-readme-stats-eight-theta.vercel.app/api/top-langs/?username=Ayush-06-gif&layout=compact&theme=radical&bg_color=0d1117&hide_border=true&title_color=3b82f6&text_color=a1a1aa&v=2",
       alt: "Ayush Raj's Top Languages",
     },
     {
       title: "GitHub Streak",
-      url: "https://github-readme-streak-stats.herokuapp.com/?user=Ayush-06-gif&theme=great-gatsby&hide_border=false",
+      url: "https://github-readme-streak-stats.herokuapp.com/?user=Ayush-06-gif&theme=radical&background=0d1117&hide_border=true&ring=3b82f6&fire=06b6d4&currStreakLabel=3b82f6&v=2",
       alt: "Ayush Raj's GitHub Streak",
     },
   ],
