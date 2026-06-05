@@ -46,18 +46,31 @@ export function GitHubStats() {
               viewport={{ once: true }}
               transition={{ delay: i * 0.1, duration: 0.6 }}
               whileHover={{ y: -4 }}
+              style={{ height: "100%" }}
             >
-              <div className="card" style={{ padding: "1rem", overflow: "hidden" }}>
+              <div 
+                className="card" 
+                style={{ 
+                  padding: "1rem", 
+                  overflow: "hidden", 
+                  height: "100%", 
+                  display: "flex", 
+                  flexDirection: "column", 
+                  justifyContent: "center" 
+                }}
+              >
                 <h3 className="text-caption" style={{ marginBottom: 12, paddingLeft: 4 }}>
                   {card.title}
                 </h3>
                 {/* eslint-disable-next-line @next/next/no-img-element */}
-                <img
-                  src={card.url}
-                  alt={card.alt}
-                  style={{ width: "100%", height: "auto", borderRadius: 8 }}
-                  loading="lazy"
-                />
+                <div style={{ flex: 1, display: "flex", alignItems: "center", justifyContent: "center" }}>
+                  <img
+                    src={card.url}
+                    alt={card.alt}
+                    style={{ width: "100%", height: "auto", borderRadius: 8 }}
+                    loading="lazy"
+                  />
+                </div>
               </div>
             </motion.div>
           ))}
